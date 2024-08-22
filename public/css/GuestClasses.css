@@ -1,0 +1,11 @@
+.footer-img{
+
+}
+.footer-page{
+    padding: 5%;
+    background: #00b5c0;
+    background-image: url('/images/root.png');
+    background-repeat: no-repeat;
+
+    height: 50%;
+}
