@@ -1,5 +1,5 @@
 <template  id="PageLoader">
-    <div class="loader-div" v-if="loaderStore.isLoading">
+    <div class="loader-div bg-gradient-info-dark" v-if="loaderStore.loadingRequests.length > 0">
       <span class="loader">
           <img src="@/assets/logo.svg" alt="Vue.js Logo" class="loader-logo" />
       </span>
@@ -24,7 +24,7 @@
   left: 0;
   display: grid;
   place-items: center;
-  z-index: 999999999999999999999;
+  z-index: 999999999; 
 }
 .loader {
     position: absolute;

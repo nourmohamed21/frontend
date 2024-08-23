@@ -1,13 +1,14 @@
-<template class="hold-transition light-skin text-center">
-  <div class="container h-p100">
+<template >
+  <div class="bg-gradient-info-dark" style="height: 100vh;" >
+    <div class="container h-p100 ">
     <div class="row align-items-center justify-content-md-center h-p100">
       <div class="col-12">
         <div class="row justify-content-center no-gutters">
           <div class="col-lg-5 col-md-5 col-12">
             <div class="bg-white rounded30 shadow-lg ribbon-box">
-              <div class="ribbon-two ribbon-two-dark "><span>Login</span></div>
+              <div class="ribbon-two "><span class="bg-gradient-info-dark ">ITEX</span></div>
               <div class="content-top-agile p-20 pb-0">
-                <h2 class="text-secondary">ITEX</h2>
+                <h2 class="text-secondary">LOGIN</h2>
               </div>
               <div class="p-40">
                 <div class="form-group">
@@ -15,8 +16,7 @@
                     <div class="input-group-prepend">
                       <span class="input-group-text bg-transparent"><i class="ti-user"></i></span>
                     </div>
-                    <input type="text" class="form-control pl-15 bg-transparent" placeholder="Username" name="username"
-                      form="login_form">
+                    <input type="text" class="form-control pl-15 bg-transparent" placeholder="Username" name="username" form="login_form">
                   </div>
                 </div>
                 <div class="form-group">
@@ -38,8 +38,8 @@
                   <!-- /.col -->
                   <div class="col-6">
                     <div class="fog-pwd text-right">
-                      <a onclick="Alert('Relax and try to remember!')" class="hover-warning"><i
-                          class="ion ion-locked"></i> Forgot pwd?</a><br>
+                      <a @click="forgetPass" class="hover-warning"><i
+                          class="ion ion-locked"></i> Forgot password?</a><br>
                     </div>
                   </div>
                   <div class="col-12 text-center">
@@ -50,33 +50,40 @@
               </div>
             </div>
             <div class="text-center">
-              <p class="text-muted "><img src="../../public/images/System/icon.ico" style="height: 5vh;" > Copyright ©  {{currentYear}} | <b > ITEX System </b></p>
+              <CopyRight></CopyRight>
             </div>
           </div>
         </div>
       </div>
     </div>
   </div>
+  </div>
 </template>
 
 <script>
+import CopyRight from '@/components/system/CopyRight.vue';
+import Alert from '@/plugins/Alert';
 import { useLoaderStore } from '@/stores/loaderStore';
 
-
-// import InputForm from '../components/forms/InputForm.vue';
 export default {
-
+  components:{
+    CopyRight,
+    
+  },
   data() {
     return {
       username: '',
       password: '',
-      currentYear:new Date('')
+     
     };
   },
   mounted() {
     this.getCurrentDate();
   },
   methods: {
+    forgetPass(){
+      Alert('Relax and try to remember!');
+    },
     getCurrentDate() {
       const date = new Date();
       const options = { year: 'numeric' };
@@ -84,7 +91,7 @@ export default {
     },
     login() {
       // Dummy token
-      useLoaderStore().showLoader();
+      useLoaderStore().add('login');
       // const token = 'dummy-token';
       // localStorage.setItem('token', token);
       // this.$router.push({ name: 'Home' });

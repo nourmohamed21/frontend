@@ -1,9 +1,34 @@
 {
   "compilerOptions": {
+    "target": "ES6",
+    "module": "ESNext",
+    "moduleResolution": "node",
+    "baseUrl": "./",
     "paths": {
-      "@/*": ["./src/*"],
-      "#/*": ["./public/*"]
-    }
+      "@/*": ["src/*"],
+      "!/*": ["public/*"]
+    },
+    "jsx": "preserve",
+    "allowJs": true,
+    "checkJs": false
   },
-  "exclude": ["node_modules", "dist"],
+  "include": [
+    "src/**/*.js",
+    "src/**/*.vue",
+    "src/**/*.json"
+  ],
+  "exclude": [
+    "node_modules",
+     "dist"
+  ]
 }
+// {
+//   "compilerOptions": {
+//     "paths": {
+//       "@/*": ["./src/*"],
+//       "#/*": ["./public/*"]
+//     }
+//   },
+//   "include": ["src/**/*"],
+//   "exclude": ["node_modules", "dist"]
+// }

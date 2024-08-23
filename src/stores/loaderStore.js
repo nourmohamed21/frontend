@@ -3,14 +3,15 @@ import { defineStore } from 'pinia';
 
 export const useLoaderStore = defineStore('loader', {
   state: () => ({
-    isLoading: false,
+    // isLoading: false,
+    loadingRequests:[],
   }),
   actions: {
-    showLoader() {
-      this.isLoading = true;
+    add(name){
+      this.loadingRequests.push(name);
     },
-    hideLoader() {
-      this.isLoading = false;
+    remove(name){
+      this.loadingRequests = this.loadingRequests.filter(request => request !== name);
     }
   }
 });

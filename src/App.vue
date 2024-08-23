@@ -7,15 +7,15 @@
 </template>
 
 <script>
-import PageLoader from '@/components/PageLoader.vue'
+import PageLoader from '@/components/system/PageLoader.vue'
 export default {
   components:{
     PageLoader,
-    
   },
   setup() {
     // useLoaderStore().showLoader();
     // Loader.showLoader();
+    document.body.classList.add( 'light-skin','theme-primary');
   },
   name: 'App'
 };
