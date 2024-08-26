@@ -16,7 +16,7 @@
                     <div class="input-group-prepend">
                       <span class="input-group-text bg-transparent"><i class="ti-user"></i></span>
                     </div>
-                    <input type="text" class="form-control pl-15 bg-transparent" placeholder="Username" name="username" form="login_form">
+                    <input type="text" class="form-control pl-15 bg-transparent" placeholder="Username" v-model="username" name="username" form="login" validate-error="Username is required" required>
                   </div>
                 </div>
                 <div class="form-group">
@@ -24,8 +24,7 @@
                     <div class="input-group-prepend">
                       <span class="input-group-text  bg-transparent"><i class="ti-lock"></i></span>
                     </div>
-                    <input type="password" class="form-control pl-15 bg-transparent" placeholder="Password"
-                      name="password" form="login_form">
+                    <input type="password" class="form-control pl-15 bg-transparent" placeholder="Password" v-model="password" validate-error="Password is required" form="login" required @keyup.enter="login">
                   </div>
                 </div>
                 <div class="row">
@@ -42,8 +41,8 @@
                           class="ion ion-locked"></i> Forgot password?</a><br>
                     </div>
                   </div>
-                  <div class="col-12 text-center">
-                    <button type="button" class="waves-effect waves-light btn mb-5 bg-gradient-danger mt-10" @click="login">Submit</button>
+                  <div class="col-12 text-center ">
+                    <button type="button" class="waves-effect waves-light btn mb-5 bg-gradient-info-dark mt-10 " style="width: 100%;" @click="login">Submit</button>
                   </div>
                   <!-- /.col -->
                 </div>
@@ -62,8 +61,11 @@
 
 <script>
 import CopyRight from '@/components/system/CopyRight.vue';
-import Alert from '@/plugins/Alert';
-import { useLoaderStore } from '@/stores/loaderStore';
+import config from '@/config/app';
+import auth from '@/models/auth';
+import { Info } from '@/plugins/Alert';
+import Api from '@/plugins/Api';
+import validate from '@/plugins/Validate';
 
 export default {
   components:{
@@ -79,10 +81,11 @@ export default {
   },
   mounted() {
     this.getCurrentDate();
+    
   },
   methods: {
     forgetPass(){
-      Alert('Relax and try to remember!');
+      Info('Relax and try to remember!');
     },
     getCurrentDate() {
       const date = new Date();
@@ -90,11 +93,18 @@ export default {
       this.currentYear = date.toLocaleDateString(undefined, options);
     },
     login() {
-      // Dummy token
-      useLoaderStore().add('login');
-      // const token = 'dummy-token';
-      // localStorage.setItem('token', token);
-      // this.$router.push({ name: 'Home' });
+      validate('login',()=>{
+        const form={
+          'username':this.username,
+          'password':this.password
+        };
+        
+        Api.post(`${config.apiTokenUrl}`,form,(res)=>{
+          auth.setToken(res.access_token??res.token);
+          this.$router.push('/home');
+        });
+        
+      });
     }
   }
 };
