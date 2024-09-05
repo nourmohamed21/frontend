@@ -9,7 +9,7 @@ import auth from "@/models/auth";
 class Api {
   static apiHost = app.apiHost;
   static  #getErrorState(res) {
-    Error(apiStanderdResponse[res.status]??'Unknown');
+    Error(apiStanderdResponse[res?.status]??'Unknown');
   }
 
   static getApiHeader() {
@@ -48,15 +48,17 @@ class Api {
         headers: Api.getApiHeader(),
       })
       .then((result) => {
+        useLoaderStore().remove('post-'+url);
         if (typeof callback === "function") {
           callback(result.data);
         }
       })
       .catch((err) => {
+        useLoaderStore().remove('post-'+url);
         Api.#getErrorState(err.response);
         console.error("Error:", err.response); // Improved error logging
       });
-      useLoaderStore().remove('post-'+url);
+   
   }
 }
 
