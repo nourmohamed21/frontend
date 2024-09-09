@@ -2,7 +2,7 @@
   
   <div id="app">
     <PageLoader></PageLoader>
-    <router-view />
+    <router-view class="fadeIn animated bg-gradient-info-dark" />
   </div>
 </template>
 

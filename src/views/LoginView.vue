@@ -1,5 +1,5 @@
 <template >
-  <div class="bg-gradient-info-dark" style="height: 100vh;" >
+  <div class="bg-gradient-primary" style="height: 100vh;" >
     <div class="container h-p100 ">
     <div class="row align-items-center justify-content-md-center h-p100">
       <div class="col-12">

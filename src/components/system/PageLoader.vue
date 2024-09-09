@@ -1,7 +1,7 @@
 <template>
     <transition name="fade">
       <div
-        class="loader-div bg-gradient-info-dark"
+        class="loader-div "
         v-if="loaderStore.loadingRequests.length > 0"
       >
         <span class="loader">
