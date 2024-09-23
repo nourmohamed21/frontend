@@ -1,7 +1,7 @@
 <template>
     <transition name="fade">
       <div
-        class="loader-div "
+        class="loader-div blurred-box"
         v-if="loaderStore.loadingRequests.length > 0"
       >
         <span class="loader">
@@ -23,6 +23,7 @@
   </script>
   
   <style scoped>
+  
   .loader-div {
     position: fixed;
     height: 100vh;
@@ -33,6 +34,7 @@
     place-items: center;
     z-index: 999999999;
     opacity: 1;
+    /* background: #0000007a; */
   }
   
   .loader {

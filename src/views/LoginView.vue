@@ -1,3 +1,32 @@
+<style>
+.blurred-box {
+
+background-color: rgba(255, 255, 255, 0.2);
+backdrop-filter: blur(10px);
+/* Apply blur effect to background */
+/* border: 1px solid rgba(255, 255, 255, 0.3);  */
+border-radius: 15px;
+/* Rounded corners */
+box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+/* Subtle shadow */
+margin: 0 auto;
+/* Center the box */
+color: #fff;
+/* Text color */
+}
+.transparent-box {
+  background-color: rgba(255, 255, 255, 0.7);
+  /* Semi-transparent white */
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  /* Light border */
+  border-radius: 15px;
+  /* Rounded corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  /* Subtle shadow */
+  margin: 0 auto;
+  /* Center the box */
+}
+</style>
 <template >
   <div class="bg-gradient-primary" style="height: 100vh;" >
     <div class="container h-p100 ">
@@ -5,8 +34,8 @@
       <div class="col-12">
         <div class="row justify-content-center no-gutters">
           <div class="col-lg-5 col-md-5 col-12">
-            <div class="bg-white rounded30 shadow-lg ribbon-box">
-              <div class="ribbon-two "><span class="bg-gradient-info-dark ">ITEX</span></div>
+            <div class="bg-white rounded10 shadow-lg ribbon-box p-5">
+              <div class="ribbon-two "><span class="bg-gradient-primary ">ITEX</span></div>
               <div class="content-top-agile p-20 pb-0">
                 <h2 class="text-secondary">LOGIN</h2>
               </div>
@@ -42,7 +71,7 @@
                     </div>
                   </div>
                   <div class="col-12 text-center ">
-                    <button type="button" class="waves-effect waves-light btn mb-5 bg-gradient-info-dark mt-10 " style="width: 100%;" @click="login">Submit</button>
+                    <button type="button" class="waves-effect waves-light btn transparent-box text-dark  mb-5  mt-10 " style="width: 100%;" @click="login">Submit</button>
                   </div>
                   <!-- /.col -->
                 </div>
