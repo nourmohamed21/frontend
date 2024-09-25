@@ -27,27 +27,31 @@
   margin: 0 auto;
   /* Center the box */
 }
+
+.modal-backdrop.fade.show {
+  display: none !important;
+}
 </style>
 <template>
 
   <body class="layout-top-nav light-skin theme-primary rtl">
 
     <div class="wrapper" style="height: 100vh !important;width: 100vw;overflow: hidden;">
-
-      <header class="main-header blurred-box"
+      <div style="height: 5vh;" v-if="section == 'apps'"></div>
+      <header class="main-header blurred-box " v-if="section == 'run'"
         style="border-radius:0 ;border-bottom-right-radius: 0.5rem;border-bottom-left-radius: 0.5rem;">
 
 
         <!-- Header Navbar -->
-        <nav class="navbar navbar-static-top pl-10 "  style="margin-right: 0 !important">
+        <nav class="navbar navbar-static-top pl-10 " style="margin-right: 0 !important">
 
           <!-- Sidebar toggle button-->
           <div class="app-menu">
-            
+
           </div>
-  
+
           <div>
-            APP  NAME
+            APP NAME
           </div>
 
           <div class="navbar-custom-menu r-side">
@@ -88,37 +92,10 @@
                           <i class="fa fa-users text-info"></i> Curabitur id eros quis nunc suscipit blandit.
                         </a>
                       </li>
+
                       <li>
                         <a href="#">
-                          <i class="fa fa-warning text-warning"></i> Duis malesuada justo eu sapien elementum, in semper
-                          diam posuere.
-                        </a>
-                      </li>
-                      <li>
-                        <a href="#">
-                          <i class="fa fa-users text-danger"></i> Donec at nisi sit amet tortor commodo porttitor
-                          pretium a erat.
-                        </a>
-                      </li>
-                      <li>
-                        <a href="#">
-                          <i class="fa fa-shopping-cart text-success"></i> In gravida mauris et nisi
-                        </a>
-                      </li>
-                      <li>
-                        <a href="#">
-                          <i class="fa fa-user text-danger"></i> Praesent eu lacus in libero dictum fermentum.
-                        </a>
-                      </li>
-                      <li>
-                        <a href="#">
-                          <i class="fa fa-user text-primary"></i> Nunc fringilla lorem
-                        </a>
-                      </li>
-                      <li>
-                        <a href="#">
-                          <i class="fa fa-user text-success"></i> Nullam euismod dolor ut quam interdum, at scelerisque
-                          ipsum imperdiet.
+                          <i class="fa fa-users text-info"></i> Curabitur id eros quis nunc suscipit blandit.
                         </a>
                       </li>
                     </ul>
@@ -140,7 +117,8 @@
                     <a class="dropdown-item" href="#"><i class="ti-wallet text-muted mr-2"></i> My Wallet</a>
                     <a class="dropdown-item" href="#"><i class="ti-settings text-muted mr-2"></i> Settings</a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#" @click="logout()"><i class="ti-lock text-muted mr-2"></i> Logout</a>
+                    <a class="dropdown-item" href="#" @click="logout()"><i class="ti-lock text-muted mr-2"></i>
+                      Logout</a>
                   </li>
                 </ul>
               </li>
@@ -155,28 +133,31 @@
         <div class="content-wrapper-before"></div>
         <div class="container-full">
           <!-- Main content -->
-          <section class="content" style="background: none !important">
-            
+          <section  id="collapseSection" style="background: none !important;height: 90vh;">
+            <transition name="fade">
+              <div v-if="section == 'apps'" class="blurred-box  p-3" style="width: 100%;height: 100%;">
+
+              </div>
+            </transition>
+            <transition name="fade">
+              <div v-if="section == 'run'">
+                run
+              </div>
+            </transition>
           </section>
           <!-- /.content -->
         </div>
       </div>
       <!-- /.content-wrapper -->
-      <footer class="text-center justify-content-center" style="position: fixed;bottom: 0.5rem;width: 100vw;display: flex;" @mouseenter="footerShow()"  @mouseleave="footerHide()" >
-        <div style="width: fit-content;display: flex;">
-          <div :class=" ' blurred-box p-2 d-flex'">
-              <ul class="header-megamenu nav">
-                <li>
-                  <div class="blurred-box p-5">
-                    <a href="#" class="waves-effect waves-light nav-link rounded svg-bt-icon" title="">
-                      <svg height="25px" width="25px" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 502 502" xml:space="preserve" fill="#ffffff"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <g> <g> <path style="fill:#ffffff;" d="M176.062,222.224h-121.1C30.13,222.224,10,202.093,10,177.261v-121.1 c0-24.832,20.13-44.963,44.963-44.963h121.1c24.832,0,44.963,20.13,44.963,44.963v121.1 C221.025,202.093,200.894,222.224,176.062,222.224z"></path> <path d="M176.062,232.224H54.963C24.656,232.224,0,207.567,0,177.261V56.162C0,25.855,24.656,1.199,54.963,1.199h121.099 c30.307,0,54.963,24.656,54.963,54.963v121.099C231.025,207.567,206.369,232.224,176.062,232.224z M54.963,21.199 C35.684,21.199,20,36.884,20,56.162v121.099c0,19.278,15.684,34.963,34.963,34.963h121.099c19.279,0,34.963-15.685,34.963-34.963 V56.162c0-19.278-15.684-34.963-34.963-34.963C176.062,21.199,54.963,21.199,54.963,21.199z"></path> </g> <g> <path d="M46.9,182c-5.523,0-10-4.478-10-10v-23c0-5.522,4.477-10,10-10s10,4.478,10,10v23C56.9,177.522,52.423,182,46.9,182z"></path> </g> <g> <path d="M46.9,122c-5.523,0-10-4.478-10-10V65.1c0-14.888,12.112-27,27-27H86c5.523,0,10,4.478,10,10s-4.477,10-10,10H63.9 c-3.86,0-7,3.141-7,7V112C56.9,117.522,52.423,122,46.9,122z"></path> </g> <g> <path style="fill:#77767b;" d="M447.037,222.224h-121.1c-24.832,0-44.963-20.13-44.963-44.963v-121.1 c0-24.832,20.13-44.963,44.963-44.963h121.1c24.832,0,44.963,20.13,44.963,44.963v121.1 C492,202.093,471.87,222.224,447.037,222.224z"></path> <path d="M447.037,232.224H325.938c-30.307,0-54.963-24.656-54.963-54.963V56.162c0-30.307,24.656-54.963,54.963-54.963h121.099 C477.344,1.199,502,25.855,502,56.162v121.099C502,207.567,477.344,232.224,447.037,232.224z M325.938,21.199 c-19.279,0-34.963,15.685-34.963,34.963v121.099c0,19.278,15.684,34.963,34.963,34.963h121.099 c19.279,0,34.963-15.685,34.963-34.963V56.162c0-19.278-15.684-34.963-34.963-34.963 C447.037,21.199,325.938,21.199,325.938,21.199z"></path> </g> <g> <path style="fill:#77767b;" d="M176.062,490.801h-121.1C30.13,490.801,10,470.671,10,445.838v-121.1 c0-24.832,20.13-44.963,44.963-44.963h121.1c24.832,0,44.963,20.13,44.963,44.963v121.1 C221.025,470.671,200.894,490.801,176.062,490.801z"></path> <path d="M176.062,500.801H54.963C24.656,500.801,0,476.145,0,445.838V324.739c0-30.307,24.656-54.963,54.963-54.963h121.099 c30.307,0,54.963,24.656,54.963,54.963v121.099C231.025,476.145,206.369,500.801,176.062,500.801z M54.963,289.776 C35.684,289.776,20,305.461,20,324.739v121.099c0,19.278,15.684,34.963,34.963,34.963h121.099 c19.279,0,34.963-15.685,34.963-34.963V324.739c0-19.278-15.684-34.963-34.963-34.963H54.963z"></path> </g> <g> <path style="fill:#77767b;" d="M447.037,490.801h-121.1c-24.832,0-44.963-20.13-44.963-44.963v-121.1 c0-24.832,20.13-44.963,44.963-44.963h121.1c24.832,0,44.963,20.13,44.963,44.963v121.1 C492,470.671,471.87,490.801,447.037,490.801z"></path> <path d="M447.037,500.801H325.938c-30.307,0-54.963-24.656-54.963-54.963V324.739c0-30.307,24.656-54.963,54.963-54.963h121.099 c30.307,0,54.963,24.656,54.963,54.963v121.099C502,476.145,477.344,500.801,447.037,500.801z M325.938,289.776 c-19.279,0-34.963,15.685-34.963,34.963v121.099c0,19.278,15.684,34.963,34.963,34.963h121.099 c19.279,0,34.963-15.685,34.963-34.963V324.739c0-19.278-15.684-34.963-34.963-34.963H325.938z"></path> </g> </g> </g></svg>
-                    </a>
-                  </div>
-                </li>
-            </ul>
-          <transition name="fade" >
- 
-              <ul :class="favoritesClass + ' header-megamenu nav'"  v-if="showFavorites" >
+      <footer class="text-center justify-content-center"
+        style="position: fixed;bottom: 0.5rem;width: 100vw;display: flex;" @mouseenter="footerShow()"
+        @mouseleave="footerHide()">
+        <div style="width: fit-content;">
+          <div style="width: 100%;position: absolute;bottom: 3.5rem;right: 0">
+            <transition name="fade">
+
+              <ul :class="favoritesClass + ' header-megamenu nav blurred-box p-2'" style="width: fit-content;"
+                v-if="showFavorites">
                 <li class="btn-group nav-item ">
                   <a href="#" class="waves-effect waves-light nav-link rounded svg-bt-icon" title="">
                     <i class="icon-Chat"><span class="path1"></span><span class="path2"></span></i>
@@ -198,58 +179,133 @@
                   </a>
                 </li>
               </ul>
-            
-          </transition>
-          
-        </div>
+
+            </transition>
+          </div>
+          <ul class="header-megamenu nav">
+            <li>
+              <div :class="'blurred-box p-5 ' + sectionBtnActive">
+                <a href="#" @click="sectionController()" class="waves-effect waves-light nav-link rounded svg-bt-icon"
+                  title="">
+                  <svg height="25px" width="25px" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
+                    xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 502 502" xml:space="preserve"
+                    fill="#ffffff">
+                    <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                    <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                    <g id="SVGRepo_iconCarrier">
+                      <g>
+                        <g>
+                          <path style="fill:#ffffff;"
+                            d="M176.062,222.224h-121.1C30.13,222.224,10,202.093,10,177.261v-121.1 c0-24.832,20.13-44.963,44.963-44.963h121.1c24.832,0,44.963,20.13,44.963,44.963v121.1 C221.025,202.093,200.894,222.224,176.062,222.224z">
+                          </path>
+                          <path
+                            d="M176.062,232.224H54.963C24.656,232.224,0,207.567,0,177.261V56.162C0,25.855,24.656,1.199,54.963,1.199h121.099 c30.307,0,54.963,24.656,54.963,54.963v121.099C231.025,207.567,206.369,232.224,176.062,232.224z M54.963,21.199 C35.684,21.199,20,36.884,20,56.162v121.099c0,19.278,15.684,34.963,34.963,34.963h121.099c19.279,0,34.963-15.685,34.963-34.963 V56.162c0-19.278-15.684-34.963-34.963-34.963C176.062,21.199,54.963,21.199,54.963,21.199z">
+                          </path>
+                        </g>
+                        <g>
+                          <path
+                            d="M46.9,182c-5.523,0-10-4.478-10-10v-23c0-5.522,4.477-10,10-10s10,4.478,10,10v23C56.9,177.522,52.423,182,46.9,182z">
+                          </path>
+                        </g>
+                        <g>
+                          <path
+                            d="M46.9,122c-5.523,0-10-4.478-10-10V65.1c0-14.888,12.112-27,27-27H86c5.523,0,10,4.478,10,10s-4.477,10-10,10H63.9 c-3.86,0-7,3.141-7,7V112C56.9,117.522,52.423,122,46.9,122z">
+                          </path>
+                        </g>
+                        <g>
+                          <path style="fill:#77767b;"
+                            d="M447.037,222.224h-121.1c-24.832,0-44.963-20.13-44.963-44.963v-121.1 c0-24.832,20.13-44.963,44.963-44.963h121.1c24.832,0,44.963,20.13,44.963,44.963v121.1 C492,202.093,471.87,222.224,447.037,222.224z">
+                          </path>
+                          <path
+                            d="M447.037,232.224H325.938c-30.307,0-54.963-24.656-54.963-54.963V56.162c0-30.307,24.656-54.963,54.963-54.963h121.099 C477.344,1.199,502,25.855,502,56.162v121.099C502,207.567,477.344,232.224,447.037,232.224z M325.938,21.199 c-19.279,0-34.963,15.685-34.963,34.963v121.099c0,19.278,15.684,34.963,34.963,34.963h121.099 c19.279,0,34.963-15.685,34.963-34.963V56.162c0-19.278-15.684-34.963-34.963-34.963 C447.037,21.199,325.938,21.199,325.938,21.199z">
+                          </path>
+                        </g>
+                        <g>
+                          <path style="fill:#77767b;"
+                            d="M176.062,490.801h-121.1C30.13,490.801,10,470.671,10,445.838v-121.1 c0-24.832,20.13-44.963,44.963-44.963h121.1c24.832,0,44.963,20.13,44.963,44.963v121.1 C221.025,470.671,200.894,490.801,176.062,490.801z">
+                          </path>
+                          <path
+                            d="M176.062,500.801H54.963C24.656,500.801,0,476.145,0,445.838V324.739c0-30.307,24.656-54.963,54.963-54.963h121.099 c30.307,0,54.963,24.656,54.963,54.963v121.099C231.025,476.145,206.369,500.801,176.062,500.801z M54.963,289.776 C35.684,289.776,20,305.461,20,324.739v121.099c0,19.278,15.684,34.963,34.963,34.963h121.099 c19.279,0,34.963-15.685,34.963-34.963V324.739c0-19.278-15.684-34.963-34.963-34.963H54.963z">
+                          </path>
+                        </g>
+                        <g>
+                          <path style="fill:#77767b;"
+                            d="M447.037,490.801h-121.1c-24.832,0-44.963-20.13-44.963-44.963v-121.1 c0-24.832,20.13-44.963,44.963-44.963h121.1c24.832,0,44.963,20.13,44.963,44.963v121.1 C492,470.671,471.87,490.801,447.037,490.801z">
+                          </path>
+                          <path
+                            d="M447.037,500.801H325.938c-30.307,0-54.963-24.656-54.963-54.963V324.739c0-30.307,24.656-54.963,54.963-54.963h121.099 c30.307,0,54.963,24.656,54.963,54.963v121.099C502,476.145,477.344,500.801,447.037,500.801z M325.938,289.776 c-19.279,0-34.963,15.685-34.963,34.963v121.099c0,19.278,15.684,34.963,34.963,34.963h121.099 c19.279,0,34.963-15.685,34.963-34.963V324.739c0-19.278-15.684-34.963-34.963-34.963H325.938z">
+                          </path>
+                        </g>
+                      </g>
+                    </g>
+                  </svg>
+                </a>
+              </div>
+            </li>
+          </ul>
         </div>
 
       </footer>
-      <TextField label="ASd" 
-      />
 
-
-      <!-- Add the sidebar's background. This div must be placed immediately after the control sidebar -->
-      <div class="control-sidebar-bg"></div>
 
     </div>
+
+
     <!-- ./wrapper -->
   </body>
 </template>
 <script>
-import TextField from '@/components/forms/TextField.vue';
+import FormsInput from '@/components/forms/FormsInput.vue';
+
 import config from '@/config/app';
 import auth from '@/models/auth';
 import Api from '@/plugins/Api';
 
 
-export default {
-  components() {
-    // CopyRight
-    TextField
+var home = {
+  components:{
+    FormsInput,
   },
   data() {
-      return {
-        showFavorites:null,
-        favoritesClass: 'animated fadeOut'
-      }
+    return {
+      showFavorites: null,
+      favoritesClass: 'animated fadeOut',
+      section: 'apps',
+      apps: [],
+      categories: [],
+      user: {},
+    }
   },
-  setup() {
+  mounted() {
 
     Api.get(config.apiHome, {}, (res) => {
-      console.log(res);
-
+      console.log(this.apps);
+      this.apps = res.apps;
+      this.category = res.category;
+      this.user = res.user;
     });
   },
+  computed: {
+    sectionBtnActive() {
+      return this.section === 'apps' ? 'bg-light' : '';
+    }
+  },
   methods: {
-    footerShow(){
-      this.showFavorites='K';
-      this.favoritesClass='animated fadeInRight';
+    sectionController() {
+      if (this.section == 'apps') {
+        this.section = 'run';
+      } else {
+        this.section = 'apps';
+      }
     },
-    footerHide(){
-      this.favoritesClass='animated fadeOutRight';
-      this.$nextTick(function(){
-        this.showFavorites=null;
+    footerShow() {
+      this.showFavorites = 'K';
+      this.favoritesClass = 'animated fadeInRight';
+    },
+    footerHide() {
+      this.favoritesClass = 'animated fadeOutRight';
+      this.$nextTick(function () {
+        this.showFavorites = null;
       });
 
     },
@@ -260,4 +316,6 @@ export default {
     }
   }
 };
+
+export default home;
 </script>

@@ -5,6 +5,7 @@
         v-if="loaderStore.loadingRequests.length > 0"
       >
         <span class="loader">
+          <!-- <img src="!/images/System/itex.gif" alt="Vue.js Logo" class="loader-logo " /> -->
           <img src="@/assets/logo.svg" alt="Vue.js Logo" class="loader-logo " />
         </span>
       </div>
