@@ -136,7 +136,46 @@
           <section  id="collapseSection" style="background: none !important;height: 90vh;">
             <transition name="fade">
               <div v-if="section == 'apps'" class="blurred-box  p-3" style="width: 100%;height: 100%;">
-
+                <div class="row justify-content-center" >
+                    <div class="col-xl-3 col-md-4 col-sm-12">
+                      <FormsSearchInput v-model="runSearch"></FormsSearchInput>
+                    </div>
+                  
+                </div>
+                <br>
+                <div>
+                  <ul class="nav nav-pills transparent-box justify-content-center mb-20 rounded p-1" >
+                    <li class=" nav-item pull-up" v-for="r in apps" :key="r.id" @click="selected_app = r"> <a href="#" :class="['nav-link',{'active': (selected_app?.id) == r.id}]" data-toggle="tab" aria-expanded="false">{{ r.name }}</a> </li>
+                  </ul>
+                </div>
+                <div class="row " >
+                  <div class="col-xl-3 col-sm-6 mb-5 overflow-auto"  style="max-height: 30vh;">
+                    <div class="vtabs customvtab">
+                      <ul class="nav nav-tabs tabs-vertical" role="tablist">
+                        <li class="nav-item animated fadeInRight " v-for="r in modules" :key="r.id"  @click="selected_module = r"> <a :class="['nav-link text-light',{'active': (selected_module?.id) == r.id}]" data-toggle="tab" href="#home3" role="tab" aria-expanded="true" aria-selected="true"><span >{{ r.name }}</span> </a> </li>
+                      </ul>
+                    </div>
+                 
+                  </div>
+                  <div class="col overflow-auto"  style="max-height: 30vh;">
+                      <div class="row text-center">
+                        <div class="col-3 animated  fadeInUp mb-5" v-for="r in runs" :key="r.id">
+                            <div style="cursor: pointer">
+                              <div class="card p-3 transparent-box pull-up" style="height: 75px !important;width: 75px !important;">
+                                <AppsLogo height="40px" width="40px"></AppsLogo>
+                              </div>
+                              <span >{{ r.name }} </span>
+                            </div>
+                        </div>
+                      </div>
+                  </div>
+                </div>
+                <div class="justify-content-center  d-flex position-absolute " style="width: 100%;bottom: 0" >
+                  <ul class="nav nav-pills transparent-box justify-content-center mb-20 rounded p-1 " style="width: fit-content" >
+                    <li class=" nav-item pull-up" v-for="r in categories" :key="r.id" @click="selected_category = r"> <a href="#" :class="['nav-link',{'active': (selected_category?.id) == r.id}]" data-toggle="tab" aria-expanded="false">{{ r.name }}</a> </li>
+                  </ul>
+                </div>
+					
               </div>
             </transition>
             <transition name="fade">
@@ -187,58 +226,7 @@
               <div :class="'blurred-box p-5 ' + sectionBtnActive">
                 <a href="#" @click="sectionController()" class="waves-effect waves-light nav-link rounded svg-bt-icon"
                   title="">
-                  <svg height="25px" width="25px" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
-                    xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 502 502" xml:space="preserve"
-                    fill="#ffffff">
-                    <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-                    <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
-                    <g id="SVGRepo_iconCarrier">
-                      <g>
-                        <g>
-                          <path style="fill:#ffffff;"
-                            d="M176.062,222.224h-121.1C30.13,222.224,10,202.093,10,177.261v-121.1 c0-24.832,20.13-44.963,44.963-44.963h121.1c24.832,0,44.963,20.13,44.963,44.963v121.1 C221.025,202.093,200.894,222.224,176.062,222.224z">
-                          </path>
-                          <path
-                            d="M176.062,232.224H54.963C24.656,232.224,0,207.567,0,177.261V56.162C0,25.855,24.656,1.199,54.963,1.199h121.099 c30.307,0,54.963,24.656,54.963,54.963v121.099C231.025,207.567,206.369,232.224,176.062,232.224z M54.963,21.199 C35.684,21.199,20,36.884,20,56.162v121.099c0,19.278,15.684,34.963,34.963,34.963h121.099c19.279,0,34.963-15.685,34.963-34.963 V56.162c0-19.278-15.684-34.963-34.963-34.963C176.062,21.199,54.963,21.199,54.963,21.199z">
-                          </path>
-                        </g>
-                        <g>
-                          <path
-                            d="M46.9,182c-5.523,0-10-4.478-10-10v-23c0-5.522,4.477-10,10-10s10,4.478,10,10v23C56.9,177.522,52.423,182,46.9,182z">
-                          </path>
-                        </g>
-                        <g>
-                          <path
-                            d="M46.9,122c-5.523,0-10-4.478-10-10V65.1c0-14.888,12.112-27,27-27H86c5.523,0,10,4.478,10,10s-4.477,10-10,10H63.9 c-3.86,0-7,3.141-7,7V112C56.9,117.522,52.423,122,46.9,122z">
-                          </path>
-                        </g>
-                        <g>
-                          <path style="fill:#77767b;"
-                            d="M447.037,222.224h-121.1c-24.832,0-44.963-20.13-44.963-44.963v-121.1 c0-24.832,20.13-44.963,44.963-44.963h121.1c24.832,0,44.963,20.13,44.963,44.963v121.1 C492,202.093,471.87,222.224,447.037,222.224z">
-                          </path>
-                          <path
-                            d="M447.037,232.224H325.938c-30.307,0-54.963-24.656-54.963-54.963V56.162c0-30.307,24.656-54.963,54.963-54.963h121.099 C477.344,1.199,502,25.855,502,56.162v121.099C502,207.567,477.344,232.224,447.037,232.224z M325.938,21.199 c-19.279,0-34.963,15.685-34.963,34.963v121.099c0,19.278,15.684,34.963,34.963,34.963h121.099 c19.279,0,34.963-15.685,34.963-34.963V56.162c0-19.278-15.684-34.963-34.963-34.963 C447.037,21.199,325.938,21.199,325.938,21.199z">
-                          </path>
-                        </g>
-                        <g>
-                          <path style="fill:#77767b;"
-                            d="M176.062,490.801h-121.1C30.13,490.801,10,470.671,10,445.838v-121.1 c0-24.832,20.13-44.963,44.963-44.963h121.1c24.832,0,44.963,20.13,44.963,44.963v121.1 C221.025,470.671,200.894,490.801,176.062,490.801z">
-                          </path>
-                          <path
-                            d="M176.062,500.801H54.963C24.656,500.801,0,476.145,0,445.838V324.739c0-30.307,24.656-54.963,54.963-54.963h121.099 c30.307,0,54.963,24.656,54.963,54.963v121.099C231.025,476.145,206.369,500.801,176.062,500.801z M54.963,289.776 C35.684,289.776,20,305.461,20,324.739v121.099c0,19.278,15.684,34.963,34.963,34.963h121.099 c19.279,0,34.963-15.685,34.963-34.963V324.739c0-19.278-15.684-34.963-34.963-34.963H54.963z">
-                          </path>
-                        </g>
-                        <g>
-                          <path style="fill:#77767b;"
-                            d="M447.037,490.801h-121.1c-24.832,0-44.963-20.13-44.963-44.963v-121.1 c0-24.832,20.13-44.963,44.963-44.963h121.1c24.832,0,44.963,20.13,44.963,44.963v121.1 C492,470.671,471.87,490.801,447.037,490.801z">
-                          </path>
-                          <path
-                            d="M447.037,500.801H325.938c-30.307,0-54.963-24.656-54.963-54.963V324.739c0-30.307,24.656-54.963,54.963-54.963h121.099 c30.307,0,54.963,24.656,54.963,54.963v121.099C502,476.145,477.344,500.801,447.037,500.801z M325.938,289.776 c-19.279,0-34.963,15.685-34.963,34.963v121.099c0,19.278,15.684,34.963,34.963,34.963h121.099 c19.279,0,34.963-15.685,34.963-34.963V324.739c0-19.278-15.684-34.963-34.963-34.963H325.938z">
-                          </path>
-                        </g>
-                      </g>
-                    </g>
-                  </svg>
+                  <AppsLogo></AppsLogo>
                 </a>
               </div>
             </li>
@@ -255,16 +243,20 @@
   </body>
 </template>
 <script>
+import FormsSearchInput from '@/components/forms/FormsSearchInput.vue';
 import FormsInput from '@/components/forms/FormsInput.vue';
 
 import config from '@/config/app';
 import auth from '@/models/auth';
 import Api from '@/plugins/Api';
+import AppsLogo from '@/components/system/AppsLogo.vue';
 
 
 var home = {
   components:{
     FormsInput,
+    FormsSearchInput,
+    AppsLogo
   },
   data() {
     return {
@@ -274,6 +266,28 @@ var home = {
       apps: [],
       categories: [],
       user: {},
+      runSearch:'',
+      runs:[],
+      modules:[],
+      selected_app:null,
+      selected_module:null,
+      selected_category: {
+        'id':'1'
+      },
+      selected_run:null,
+    }
+  },
+  watch:{
+    runSearch(newVal){
+      console.log(newVal);
+      
+    },
+    selected_app(){
+      this.runs=[];
+      this.showModlues();
+    },
+    selected_module(){
+      this.showRuns();
     }
   },
   mounted() {
@@ -281,7 +295,7 @@ var home = {
     Api.get(config.apiHome, {}, (res) => {
       console.log(this.apps);
       this.apps = res.apps;
-      this.category = res.category;
+      this.categories = res.category;
       this.user = res.user;
     });
   },
@@ -291,6 +305,15 @@ var home = {
     }
   },
   methods: {
+    showModlues(){
+     
+      
+      this.modules=this.selected_app.modules;
+      console.log(this.modules);
+    },
+    showRuns(){
+      this.runs=this.selected_module.runs;
+    },
     sectionController() {
       if (this.section == 'apps') {
         this.section = 'run';
