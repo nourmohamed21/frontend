@@ -5,8 +5,8 @@
         v-if="loaderStore.loadingRequests.length > 0"
       >
         <span class="loader">
-          <!-- <img src="!/images/System/itex.gif" alt="Vue.js Logo" class="loader-logo " /> -->
-          <img src="@/assets/logo.svg" alt="Vue.js Logo" class="loader-logo " />
+          <img src="!/images/System/kali.png"  alt="Vue.js Logo" class="loader-logo2 " />
+          <!-- <img src="@/assets/logo.svg" alt="Vue.js Logo" class="loader-logo " /> -->
         </span>
       </div>
     </transition>
@@ -36,6 +36,7 @@
     z-index: 999999999;
     opacity: 1;
     /* background: #0000007a; */
+    border-radius: 0 !important;
   }
   
   .loader {

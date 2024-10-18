@@ -14442,7 +14442,7 @@ body .main-header .navbar .nav > li.search-box > a:hover, body .main-header .nav
 
 /*Custom vertical tab*/
 .customvtab .tabs-vertical li .nav-link:hover, .customvtab .tabs-vertical li .nav-link:active, .customvtab .tabs-vertical li .nav-link:focus, .customvtab .tabs-vertical li .nav-link.active {
-  background: transparent !important;
+  background: transparent;
   border: 0px;
   margin-right: -1px; }
 

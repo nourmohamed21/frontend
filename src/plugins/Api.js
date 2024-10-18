@@ -9,7 +9,7 @@ import auth from "@/models/auth";
 class Api {
   static apiHost = app.apiHost;
   static  #getErrorState(res) {
-    Error(apiStanderdResponse[res?.status]??'Unknown');
+    Error(apiStanderdResponse[res?.status]??'Server Unreachable');
   }
 
   static getApiHeader() {

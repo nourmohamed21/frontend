@@ -23,6 +23,22 @@ const router = createRouter({
       name: 'Home',
       beforeEnter: (to,from,next)=>auth.middleware(to,from,next),
       component: HomeView,
+      props: () => ({
+        toApp: null,
+        toModule: null,
+        toRun: null
+      })
+    },
+    {
+      path: '/:app/:module/:run',
+      name: 'Run',
+      beforeEnter: (to, from, next) => auth.middleware(to, from, next),
+      component: HomeView,
+      props: route => ({
+        toApp: route.params.app,
+        toModule: route.params.module,
+        toRun: route.params.run
+      })
     }
   ]
 })

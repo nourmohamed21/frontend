@@ -28,14 +28,15 @@ color: #fff;
 }
 </style>
 <template >
-  <div class="bg-gradient-primary" style="height: 100vh;" >
+  <body class="layout-top-nav rtl light-skin theme-primary theme-sky">
+    <div class="wrapper" style="height: 100vh !important;width: 100vw;overflow: hidden;">
     <div class="container h-p100 ">
     <div class="row align-items-center justify-content-md-center h-p100">
       <div class="col-12">
         <div class="row justify-content-center no-gutters">
           <div class="col-lg-5 col-md-5 col-12">
             <div class="bg-white rounded10 shadow-lg ribbon-box p-5">
-              <div class="ribbon-two "><span class="bg-gradient-primary ">ITEX</span></div>
+              <div class="ribbon-two "><span class="bg-gradient-primary-dark ">ITEX</span></div>
               <div class="content-top-agile p-20 pb-0">
                 <h2 class="text-secondary">LOGIN</h2>
               </div>
@@ -86,6 +87,8 @@ color: #fff;
     </div>
   </div>
   </div>
+  </body>
+
 </template>
 
 <script>

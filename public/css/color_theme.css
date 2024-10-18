@@ -1,5 +1,5 @@
-@import url("https://fonts.googleapis.com/css?family=IBM+Plex+Sans:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i|Rubik:300,300i,400,400i,500,500i,700,700i,900,900i&display=swap");
-/*Social Media Colors*/
+/* @import url("https://fonts.googleapis.com/css?family=IBM+Plex+Sans:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i|Rubik:300,300i,400,400i,500,500i,700,700i,900,900i&display=swap"); */
+/* Social Media Colors */
 /*Theme Colors*/
 /*Lite color*/
 /*Theme Colors For Dark*/
@@ -463,15 +463,24 @@ Theme Primary Color
 
 .dark-skin.theme-primary.fixed .main-header {
   /* background: #000000; */
-  background: url('/images/System/body-dark-background2.jpg');
+  background: url('/images/System/body-dark-background2.jpg') no-repeat;
+  background-size: cover;
  }
 .dark-skin.theme-primary.fixed .main-nav {
   /* background: #000000; */
-  background: url('/images/System/body-dark-background2.jpg');
+  background: url('/images/System/body-dark-background2.jpg') no-repeat;
+  background-size: cover;
  }
-.dark-skin.theme-primary .content-wrapper-before {
+.dark-skin.theme-primary.theme-stars .content-wrapper-before {
   /* background: #000000;  */
-  background: url('/images/System/body-dark-background2.jpg');
+  background: url('/images/System/body-dark-background2.jpg') no-repeat;
+  background-size: cover;
+}
+
+.light-skin.theme-primary.theme-sky .content-wrapper-before {
+  /* background: #000000;  */
+  background: url('/images/System/body-light-background.jpg') no-repeat;
+  background-size: cover;
 }
 
 @media (max-width: 767px) {
@@ -1814,11 +1823,11 @@ Theme Primary Color
   color: #4e0973; }
 .theme-primary .nav-pills > li > a.active {
   border-top-color: #4e0973;
-  background-color: #4e0973 !important;
+  background-color: #4e0973 ;
   color: #ffffff; }
   .theme-primary .nav-pills > li > a.active:hover, .theme-primary .nav-pills > li > a.active:focus {
     border-top-color: #4e0973;
-    background-color: #4e0973 !important;
+    background-color: #4e0973 ;
     color: #ffffff; }
 .theme-primary .mailbox-nav .nav-pills > li > a:hover, .theme-primary .mailbox-nav .nav-pills > li > a:focus {
   border-color: #4e0973; }

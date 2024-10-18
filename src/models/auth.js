@@ -17,7 +17,7 @@ class auth {
     const isAuthenticated = !!auth.getToken(); //  check
 
     // Redirect to /home if authenticated and not already going there
-    if (isAuthenticated && to.path !== '/home') {
+    if (isAuthenticated && to.path == '/login') {
       next('/home');
     }
     // Redirect to /login if not authenticated and not already going there
