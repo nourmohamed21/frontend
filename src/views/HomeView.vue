@@ -1,48 +1,3 @@
-<style>
-
-.blurred-box {
-
-  background-color: rgba(255, 255, 255, 0.2) !important;
-  backdrop-filter: blur(10px) !important;
-  /* Apply blur effect to background */
-  /* border: 1px solid rgba(255, 255, 255, 0.3);  */
-  border-radius: 15px;
-  
-  /* Rounded corners */
-  /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); */
-  /* Subtle shadow */
-  margin: 0 auto !important;
-  /* Center the box */
-  color: #fff !important;
-  /* Text color */
-}
-
-.transparent-box {
-  background-color: rgba(255, 255, 255, 0.7) !important;
-  /* Semi-transparent white */
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  color: rgb(36, 36, 36) !important;
-  /* Light border */
-  border-top-color: transparent !important;
-  border-radius: 15px;
-  /* Rounded corners */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  /* Subtle shadow */
-  margin: 0 auto;
-  /* Center the box */
-  
-}
-.transparent-box:focus {
-  color: rgb(36, 36, 36) !important;
-}
-.transparent-box:hover {
-  color: rgb(36, 36, 36) !important;
-}
-
-.modal-backdrop.fade.show {
-  display: none !important;
-}
-</style>
 <template>
 
   <body :class="'layout-top-nav rtl '+selected_theme">
@@ -226,7 +181,7 @@
       </div>
       <!-- /.content-wrapper -->
       <footer class="text-center justify-content-center"
-        style="position: fixed;bottom: 0.5rem;width: 100vw;display: flex;" @mouseleave="footerHide()">
+        style="position: fixed;bottom: 0.5rem;width: 100vw;display: flex;" >
         <div style="width: fit-content;">
 
           <div :class="'blurred-box p-5 pull-up' + sectionBtnActive"  style="width: 75px;" v-if="showFavorites == null">

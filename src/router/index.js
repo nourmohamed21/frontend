@@ -9,7 +9,8 @@ const router = createRouter({
     {
       path: '/',
       name: '/',
-      beforeEnter: (to,from,next)=>auth.middleware(to,from,next),
+      // beforeEnter: (to,from,next)=>auth.middleware(to,from,next), 
+      redirect: { name: 'Login' },
     },
     {
       path: '/login',

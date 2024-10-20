@@ -88,11 +88,55 @@ Waves
 @import url(../assets/icons/flag-icon-css/css/flag-icon.css);
 @import url(../assets/icons/material-design-iconic-font/css/materialdesignicons.css);
 @import url(../assets/icons/simple-line-icons/css/simple-line-icons.css);
-@import url(../assets/icons/cryptocoins-master/cryptocoins.css);
-@import url(../assets/icons/weather-icons/css/weather-icons.min.css);
+/* @import url(../assets/icons/cryptocoins-master/cryptocoins.css); */
+/* @import url(../assets/icons/weather-icons/css/weather-icons.min.css); */
 @import url(../assets/icons/iconsmind/style.css);
 @import url(../assets/icons/icomoon/style.css);
 @import url(../assets/vendor_components/animate/animate.css);
+
+
+.blurred-box {
+
+  background-color: rgba(255, 255, 255, 0.2) !important;
+  backdrop-filter: blur(10px) !important;
+  /* Apply blur effect to background */
+  /* border: 1px solid rgba(255, 255, 255, 0.3);  */
+  border-radius: 15px;
+  
+  /* Rounded corners */
+  /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); */
+  /* Subtle shadow */
+  margin: 0 auto !important;
+  /* Center the box */
+  color: #fff !important;
+  /* Text color */
+}
+
+.transparent-box {
+  background-color: rgba(255, 255, 255, 0.7) !important;
+  /* Semi-transparent white */
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  color: rgb(36, 36, 36) !important;
+  /* Light border */
+  border-top-color: transparent !important;
+  border-radius: 15px;
+  /* Rounded corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  /* Subtle shadow */
+  margin: 0 auto;
+  /* Center the box */
+  
+}
+.transparent-box:focus {
+  color: rgb(36, 36, 36) !important;
+}
+.transparent-box:hover {
+  color: rgb(36, 36, 36) !important;
+}
+
+.modal-backdrop.fade.show {
+  display: none !important;
+}
 html {
   height: 100%;
   font-size: 16px; }
