@@ -128,25 +128,17 @@
                   
                 </div>
                 <br>
-                <div class="mb-5">
-                  <ul class="nav nav-pills blurred-box justify-content-center mb-20 rounded shadow-none" style="width: fit-content;">
-                    <li class=" nav-item pull-up" v-for="r in apps" :key="r.id" @click="selected_app = r"> <a href="#" :class="['nav-link text-light',{'transparent-box': (selected_app?.id) == r.id}]" data-toggle="tab" aria-expanded="false">{{ r.name }}</a> </li>
-                    <li class=" nav-item pull-up"   @click="selected_app = null"> <a href="#" :class="['nav-link text-light',{'transparent-box': (selected_app?.id) == null}]" data-toggle="tab" aria-expanded="false">All</a> </li>
+                <div class="justify-content-center  d-flex " style="width: 100%;"  >
+                  <ul class="nav nav-pills blurred-box justify-content-center mb-20 rounded shadow-none" style="width: fit-content" >
+                    <li class=" nav-item pull-up" v-for="r in categories" :key="r.id" @click="selected_category = r"> <a href="#" :class="['nav-link text-light',{'transparent-box text-dark-i': (selected_category?.id) == r.id}]" data-toggle="tab" aria-expanded="false">{{ r.name }}</a> </li>
                   </ul>
                 </div>
+
                 <div class="row "  style="height: 60vh;overflow-x: hidden !important;overflow-y: auto !important;" >
-                  <div class="col-xl-2 col-md-3 col-sm-6 mb-5 overflow-auto"  v-if="modules?.length > 0">
-                    <div class="vtabs customvtab blurred-box shadow-none " style="width: 100%;height: 100%;">
-                      <ul class="nav nav-tabs  tabs-vertical " role="tablist">
-                        <li class="nav-item animated fadeInRight border-right" v-for="r in modules" :key="r.id"  @click="selected_module = r"> <a :class="['nav-link text-light',{'transparent-box': (selected_module?.id) == r.id}]" data-toggle="tab" href="#home3" role="tab" aria-expanded="true" aria-selected="true"><span >{{ r.name }}</span> </a> </li>
-                      </ul>
-                    </div>
-                 
-                  </div>
                   <div class="col overflow-auto"  >
                       <div class="row text-center">
-                        <div class="col-3 animated   fadeInUp mb-5" v-for="r in runs" :key="r.id">
-                            <div class="blurred-box pull-up" style="cursor: pointer;display: grid;justify-content: center;justify-items: center;" @click="selected_run = r">
+                        <div class="col-6 col-sm-3 col-md-3 animated p-2  fadeInUp mb-5" v-for="r in runs" :key="r.id">
+                            <div class="blurred-box pull-up p-3" style="cursor: pointer;display: grid;justify-content: center;justify-items: center;" @click="selected_run = r;selectThisRun()">
                               <AppsLogo :image="r.image" height="60px" width="60px"></AppsLogo>
                               <span class="text-light">{{ r.name }} </span>
                             </div>
@@ -154,11 +146,7 @@
                       </div>
                   </div>
                 </div>
-                <div class="justify-content-center  d-flex position-absolute " style="width: 100%;bottom:10vh" v-if="showFavorites == null" >
-                  <ul class="nav nav-pills blurred-box justify-content-center mb-20 rounded shadow-none" style="width: fit-content" >
-                    <li class=" nav-item pull-up" v-for="r in categories" :key="r.id" @click="selected_category = r"> <a href="#" :class="['nav-link text-light',{'transparent-box': (selected_category?.id) == r.id}]" data-toggle="tab" aria-expanded="false">{{ r.name }}</a> </li>
-                  </ul>
-                </div>
+
 					
               </div>
             </transition>
@@ -184,46 +172,14 @@
         style="position: fixed;bottom: 0.5rem;width: 100vw;display: flex;" >
         <div style="width: fit-content;">
 
-          <div :class="'blurred-box p-5 pull-up' + sectionBtnActive"  style="width: 75px;" v-if="showFavorites == null">
+          <div :class="'transparent-box p-5 pull-up' + sectionBtnActive"  style="width: 75px;" >
               <a href="#" @click="sectionController()" class="waves-effect waves-light nav-link rounded svg-bt-icon"
                 title="">
                 <AppsLogo></AppsLogo>
               </a>
           </div>
           
-          <div style="width: 100%;">
-            <!-- <transition name="fade"> -->
-
-              <ul :class="favoritesClass + ' header-megamenu nav transparent-box p-2'" style="width: fit-content;"
-                v-if="showFavorites">
-                <li class="btn-group nav-item ">
-                  <a href="#" class="waves-effect waves-light nav-link rounded svg-bt-icon" title="">
-                    <AppsLogo image="qua.png" height="40px" width="40px"></AppsLogo>
-                  </a>
-                </li>
-                <li class="btn-group nav-item ">
-                  <a href="#" class="waves-effect waves-light nav-link rounded svg-bt-icon" title="">
-                    <AppsLogo image="files.png" height="40px" width="40px"></AppsLogo>
-                  </a>
-                </li>
-                <li class="btn-group nav-item ">
-                  <a href="#" class="waves-effect waves-light nav-link rounded svg-bt-icon" title="">
-                    <AppsLogo image="course.png" height="40px" width="40px"></AppsLogo>
-                  </a>
-                </li>
-                <li class="btn-group nav-item ">
-                  <a href="#" class="waves-effect waves-light nav-link rounded svg-bt-icon" title="">
-                    <AppsLogo image="persone.png" height="40px" width="40px"></AppsLogo>
-                  </a>
-                </li>
-              </ul>
-
-            <!-- </transition> -->
-          </div>
-        </div>
-        <div style="position: fixed;bottom: 0;right: 0">
-          <button class="btn fa fa-star text-warning" @mouseenter="footerShow()" ></button>
-        </div>
+</div>
       </footer>
     </div>
 
@@ -294,6 +250,27 @@ export default {
       this.showRuns();
     },
     selected_run() {
+      this.selectThisRun();
+    }
+  },
+  mounted() {
+    Api.get(config.apiHome, {}, (res) => {
+      this.apps = res.apps;
+      this.categories = res.category;
+      this.user = res.user;
+      
+      this.showAllRuns();
+      this.showRuns();
+    });
+    this.run();
+  },
+  computed: {
+    sectionBtnActive() {
+      return this.section === 'apps' ? 'bg-light' : '';
+    }
+  },
+  methods: {
+    selectThisRun(){
       // first need to attach run's data to add selected app and module
       this.selected_app=this.apps.find(k=>k.id == this.selected_run.app_id); // set to make modules showen
       this.$nextTick(()=>{
@@ -311,24 +288,7 @@ export default {
     
       // Handle when a run is selected
       this.sectionController();
-    }
-  },
-  mounted() {
-    Api.get(config.apiHome, {}, (res) => {
-      this.apps = res.apps;
-      this.categories = res.category;
-      this.user = res.user;
-      
-      this.showAllRuns();
-    });
-    this.run();
-  },
-  computed: {
-    sectionBtnActive() {
-      return this.section === 'apps' ? 'bg-light' : '';
-    }
-  },
-  methods: {
+    },
     async run(){
         var asyncComponent;
         if(this.toRun!=null){
@@ -357,15 +317,17 @@ export default {
 
     },
     showRuns() {
+      var phase1;
       if (this.runSearch=='') {
-        if (this.selected_app!=null) {
-          var phase1= this.allRuns.filter(k => k.app_id == this.selected_app.id);
-          if (this.selected_module != null) {
-             phase1 = this.selected_module?.runs;
-          }
-        }else{
-          phase1 = this.allRuns;
-        }
+        // if (this.selected_app!=null) {
+        //   var phase1= this.allRuns.filter(k => k.app_id == this.selected_app.id);
+        //   if (this.selected_module != null) {
+        //      phase1 = this.selected_module?.runs;
+        //   }
+        // }else{
+        //   phase1 = this.allRuns;
+        // }
+        phase1 = this.allRuns;
      
       }else{
         phase1 = this.allRuns.filter(k => k.name.toLowerCase().includes(this.runSearch.toLowerCase()));

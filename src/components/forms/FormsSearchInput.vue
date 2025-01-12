@@ -47,6 +47,7 @@ export default {
   align-items: center;
   padding: 5px 20px;
   box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
+  
 }
 
 .search-bar input {
@@ -56,14 +57,15 @@ export default {
   width: 100%;
   padding-left: 10px;
   color: #000; /* Ensure text is visible */
+  color: white !important;
 }
 
 .search-bar input::placeholder {
-  color: #888888; /* Light grey color for placeholder */
+  color: #ffffff; /* Light grey color for placeholder */
 }
 
 .search-bar .search-icon {
-  color: #888888;
+  color: #ffffff;
   font-size: 18px;
 }
 </style>
