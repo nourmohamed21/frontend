@@ -77,7 +77,7 @@ Waves
 /*Theme Colors For Dark*/
 /*---reset---*/
 /*Body*/
-
+@import url(swal.css);
 @import url(horizontal-menu.css);
 @import url(style_rtl.css);
 @import url(../assets/icons/font-awesome/css/font-awesome.css);

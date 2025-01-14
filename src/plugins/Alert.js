@@ -1,3 +1,4 @@
+import Swal from 'sweetalert2';
 import { useToast } from 'vue-toast-notification';
 // Get the toast instance
   const toast = useToast();
@@ -25,16 +26,42 @@ function Alert(msg, type = 'i', timeout = 4000) {
 }
 
 function Error(msg,timeout){
-  // Show the toast with the determined type and message
-  toast['error'](msg, { duration: timeout, position: 'top-right' });
+  if (msg==1) {
+    Swal.fire({
+        icon: "error",
+        title: "",
+        text: '',
+        background: "transparent",
+        timer: 1000, // Auto-close after 3 seconds
+        timerProgressBar: false,
+        showConfirmButton: false,
+    });
+  }else{
+    // Show the toast with the determined type and message
+    toast['error'](msg, { duration: timeout, position: 'top-right' });
+  }
+
 }
 function Warning(msg,timeout){
   // Show the toast with the determined type and message
   toast['warning'](msg, { duration: timeout, position: 'top-right' });
 }
 function Success(msg,timeout){
-  // Show the toast with the determined type and message
-  toast['success'](msg, { duration: timeout, position: 'top-right' });
+  if (msg==1) {
+    Swal.fire({
+        icon: "success",
+        title: "",
+        text: '',
+        background: "transparent",
+        timer: 1000, // Auto-close after 3 seconds
+        timerProgressBar: false,
+        showConfirmButton: false,
+    });
+  }else{
+    // Show the toast with the determined type and message
+    toast['success'](msg, { duration: timeout, position: 'top-right' });
+  }
+
 }
 function Info(msg,timeout){
   // Show the toast with the determined type and message

@@ -1,0 +1,30 @@
+div:where(.swal2-icon).swal2-success {
+    border-color:aqua !important;
+    color: aqua !important;
+}
+div:where(.swal2-container).swal2-backdrop-show, div:where(.swal2-container).swal2-noanimation{
+    /* background: #ffffff5f !important; */
+    background: rgba(255, 255, 255, 0.1) !important; /* Semi-transparent white */
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1); /* Soft shadow */
+  backdrop-filter: blur(10px); /* Apply blur effect */
+  border: 1px solid rgba(255, 255, 255, 0.2); /* Border with transparency */
+  /* text-align: center; */
+  /* color: white; */
+  /* font-family: 'Arial', sans-serif; */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+div:where(.swal2-icon).swal2-success{
+    color: aqua !important;
+}
+div:where(.swal2-icon).swal2-success [class^="swal2-success-line"]{
+    background: aqua !important;
+}
+.swal2-success-line-tip{
+    color: aqua !important;
+    background: aqua !important;
+}
+
+/* // button */
+div:where(.swal2-container) button:where(.swal2-styled):where(.swal2-confirm){
+    background: transparent !important;
+}

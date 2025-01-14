@@ -15,7 +15,7 @@ export default {
   setup() {
     // useLoaderStore().showLoader();
     // Loader.showLoader();
-    document.body.classList.add( 'light-skin','theme-primary');
+    document.body.classList.add( 'light-skin','theme-primary','theme-sky');
   },
   name: 'App'
 };

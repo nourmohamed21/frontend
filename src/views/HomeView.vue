@@ -1,6 +1,6 @@
 <template>
 
-  <body :class="'layout-top-nav rtl '+selected_theme">
+  <div :class="'layout-top-nav rtl '">
 
     <div class="wrapper" style="height: 100vh !important;width: 100vw;overflow: hidden;">
       <div style="height: 5vh;" v-if="section == 'apps'"></div>
@@ -23,21 +23,32 @@
           <div class="navbar-custom-menu r-side">
             <ul class="nav navbar-nav">
               <li class="dropdown user2 user2-menu">
-                <a href="#" class="waves-effect waves-light dropdown-toggle" data-target="#asdasd" data-toggle="dropdown" title="Themes">
+                <a href="#" class="waves-effect waves-light dropdown-toggle" data-target="#asdasd"
+                  data-toggle="dropdown" title="Themes">
                   <i class="icon-Settings"><span class="path1"></span><span class="path2"></span></i>
                 </a>
                 <ul id="asdasd" class="dropdown-menu animated fadeInDown">
                   <li class="user-body">
                     <a class="dropdown-item text-center" href="#"><i class="ti-settings text-muted mr-2"></i> Themes</a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item text-left" href="#" @click="selected_theme='light-skin theme-primary theme-sky'"><i class="ti-pencil text-muted mr-2"></i> Light Sky</a>
-                    <a class="dropdown-item text-left" href="#" @click="selected_theme='dark-skin theme-primary theme-stars'"><i class="ti-pencil text-muted mr-2"></i> Dark Stars</a>
-                    <a class="dropdown-item text-left" href="#" @click="selected_theme='light-skin theme-primary'"><i class="ti-pencil text-muted mr-2"></i> Light Primary</a>
-                    <a class="dropdown-item text-left" href="#" @click="selected_theme='dark-skin theme-primary'"><i class="ti-pencil text-muted mr-2"></i> Dark Primary</a>
-                    <a class="dropdown-item text-left" href="#" @click="selected_theme='light-skin theme-success'"><i class="ti-pencil text-muted mr-2"></i> Light Success</a>
-                    <a class="dropdown-item text-left" href="#" @click="selected_theme='light-skin theme-danger'"><i class="ti-pencil text-muted mr-2"></i> Light Danger</a>
-                    <a class="dropdown-item text-left" href="#" @click="selected_theme='light-skin theme-info'"><i class="ti-pencil text-muted mr-2"></i> Light Info</a>
-                    <a class="dropdown-item text-left" href="#" @click="selected_theme='light-skin theme-warning'"><i class="ti-pencil text-muted mr-2"></i> Light Warning</a>
+                    <a class="dropdown-item text-left" href="#"
+                      @click="selected_theme = 'light-skin theme-primary theme-sky'"><i
+                        class="ti-pencil text-muted mr-2"></i> Light Sky</a>
+                    <a class="dropdown-item text-left" href="#"
+                      @click="selected_theme = 'dark-skin theme-primary theme-stars'"><i
+                        class="ti-pencil text-muted mr-2"></i> Dark Stars</a>
+                    <a class="dropdown-item text-left" href="#" @click="selected_theme = 'light-skin theme-primary'"><i
+                        class="ti-pencil text-muted mr-2"></i> Light Primary</a>
+                    <a class="dropdown-item text-left" href="#" @click="selected_theme = 'dark-skin theme-primary'"><i
+                        class="ti-pencil text-muted mr-2"></i> Dark Primary</a>
+                    <a class="dropdown-item text-left" href="#" @click="selected_theme = 'light-skin theme-success'"><i
+                        class="ti-pencil text-muted mr-2"></i> Light Success</a>
+                    <a class="dropdown-item text-left" href="#" @click="selected_theme = 'light-skin theme-danger'"><i
+                        class="ti-pencil text-muted mr-2"></i> Light Danger</a>
+                    <a class="dropdown-item text-left" href="#" @click="selected_theme = 'light-skin theme-info'"><i
+                        class="ti-pencil text-muted mr-2"></i> Light Info</a>
+                    <a class="dropdown-item text-left" href="#" @click="selected_theme = 'light-skin theme-warning'"><i
+                        class="ti-pencil text-muted mr-2"></i> Light Warning</a>
                   </li>
                 </ul>
               </li>
@@ -118,49 +129,55 @@
         <div class="content-wrapper-before"></div>
         <div class="container-full">
           <!-- Main content -->
-          <section  id="collapseSection" style="background: none !important;height: 90vh;" @click="footerHide()">
+          <section id="collapseSection" style="background: none !important;height: 90vh;" @click="footerHide()">
             <transition name="fade">
               <div v-if="section == 'apps'" class="  p-3" style="width: 100%;height: 100%;">
-                <div class="row justify-content-center" >
-                    <div class="col-xl-3 col-md-4 col-sm-12">
-                      <FormsSearchInput :modelValue="runSearch"></FormsSearchInput>
-                    </div>
-                  
+                <div class="row justify-content-center">
+                  <div class="col-xl-3 col-md-4 col-sm-12">
+                    <FormsSearchInput :modelValue="runSearch"></FormsSearchInput>
+                  </div>
+
                 </div>
                 <br>
-                <div class="justify-content-center  d-flex " style="width: 100%;"  >
-                  <ul class="nav nav-pills blurred-box justify-content-center mb-20 rounded shadow-none" style="width: fit-content" >
-                    <li class=" nav-item pull-up" v-for="r in categories" :key="r.id" @click="selected_category = r"> <a href="#" :class="['nav-link text-light',{'transparent-box text-dark-i': (selected_category?.id) == r.id}]" data-toggle="tab" aria-expanded="false">{{ r.name }}</a> </li>
+                <div class="justify-content-center  d-flex " style="width: 100%;">
+                  <ul class="nav nav-pills blurred-box justify-content-center mb-20 rounded shadow-none"
+                    style="width: fit-content">
+                    <li class=" nav-item pull-up" v-for="r in categories" :key="r.id" @click="selected_category = r"> <a
+                        href="#"
+                        :class="['nav-link text-light', { 'transparent-box text-dark-i': (selected_category?.id) == r.id }]"
+                        data-toggle="tab" aria-expanded="false">{{ r.name }}</a> </li>
                   </ul>
                 </div>
 
-                <div class="row "  style="height: 60vh;overflow-x: hidden !important;overflow-y: auto !important;" >
-                  <div class="col overflow-auto"  >
-                      <div class="row text-center">
-                        <div class="col-6 col-sm-3 col-md-3 animated p-2  fadeInUp mb-5" v-for="r in runs" :key="r.id">
-                            <div class="blurred-box pull-up p-3" style="cursor: pointer;display: grid;justify-content: center;justify-items: center;" @click="selected_run = r;selectThisRun()">
-                              <AppsLogo :image="r.image" height="60px" width="60px"></AppsLogo>
-                              <span class="text-light">{{ r.name }} </span>
-                            </div>
+                <div class="row " style="height: 60vh;overflow-x: hidden !important;overflow-y: auto !important;">
+                  <div class="col overflow-auto">
+                    <div class="row text-center">
+                      <div class="col-6 col-sm-3 col-md-3 animated p-2  fadeInUp mb-5" v-for="r in runs" :key="r.id">
+                        <div class="blurred-box pull-up p-3"
+                          style="cursor: pointer;display: grid;justify-content: center;justify-items: center;"
+                          @click="selected_run = r; selectThisRun()">
+                          <AppsLogo :image="r.image" height="60px" width="60px"></AppsLogo>
+                          <span class="text-light">{{ r.name }} </span>
                         </div>
                       </div>
+                    </div>
                   </div>
                 </div>
 
-					
+
               </div>
             </transition>
             <transition name="fade">
-              <div v-if="section == 'run'" class="p-10"> 
-                    <!-- Display dynamic component based on route name -->
-                    <!-- <Suspense> -->
-                      <!-- <template #default> -->
-                        <component :is="dynamicComponent" />
-                      <!-- </template> -->
-                      <!-- <template #fallback> -->
-                        <!-- <div>Loading...</div> -->
-                      <!-- </template> -->
-                    <!-- </Suspense> -->
+              <div v-if="section == 'run'" class="p-10">
+                <!-- Display dynamic component based on route name -->
+                <!-- <Suspense> -->
+                <!-- <template #default> -->
+                <component :is="dynamicComponent" />
+                <!-- </template> -->
+                <!-- <template #fallback> -->
+                <!-- <div>Loading...</div> -->
+                <!-- </template> -->
+                <!-- </Suspense> -->
               </div>
             </transition>
           </section>
@@ -169,23 +186,23 @@
       </div>
       <!-- /.content-wrapper -->
       <footer class="text-center justify-content-center"
-        style="position: fixed;bottom: 0.5rem;width: 100vw;display: flex;" >
+        style="position: fixed;bottom: 0.5rem;width: 100vw;display: flex;">
         <div style="width: fit-content;">
 
-          <div :class="'transparent-box p-5 pull-up' + sectionBtnActive"  style="width: 75px;" >
-              <a href="#" @click="sectionController()" class="waves-effect waves-light nav-link rounded svg-bt-icon"
-                title="">
-                <AppsLogo></AppsLogo>
-              </a>
+          <div :class="'transparent-box p-5 pull-up' + sectionBtnActive" style="width: 75px;">
+            <a href="#" @click="sectionController()" class="waves-effect waves-light nav-link rounded svg-bt-icon"
+              title="">
+              <AppsLogo></AppsLogo>
+            </a>
           </div>
-          
-</div>
+
+        </div>
       </footer>
     </div>
 
 
     <!-- ./wrapper -->
-  </body>
+  </div>
 </template>
 <script>
 import FormsSearchInput from '@/components/forms/FormsSearchInput.vue';
@@ -197,6 +214,7 @@ import Api from '@/plugins/Api';
 import AppsLogo from '@/components/system/AppsLogo.vue';
 import StatusCode404 from '@/components/system/statusCode404.vue';
 import { markRaw } from 'vue';
+// import Websocket from '@/plugins/Websocket';
 
 export default {
   components: {
@@ -211,9 +229,9 @@ export default {
     toRun: String
   },
   data() {
-    
+
     return {
-      selected_theme:'light-skin theme-primary theme-sky',
+      selected_theme: 'light-skin theme-primary theme-sky',
       showFavorites: true,
       favoritesClass: 'animated fadeIn',
       section: 'apps',
@@ -229,11 +247,27 @@ export default {
         id: '1'
       },
       selected_run: null,
-      dynamicComponent:null,
-      allRuns:[]
+      dynamicComponent: null,
+      allRuns: []
     };
   },
   watch: {
+    selected_theme(newVal) {
+      // Split the old and new class strings into arrays of class names
+
+      const newClasses = newVal.split(' ');
+
+      // Remove all existing classes
+      document.body.className = '';
+
+      // Add new classes
+      newClasses.forEach((className) => {
+        if (className) {
+          document.body.classList.add(className);
+        }
+      });
+
+    },
     runSearch() {
       this.showRuns();
     },
@@ -258,11 +292,13 @@ export default {
       this.apps = res.apps;
       this.categories = res.category;
       this.user = res.user;
-      
+
       this.showAllRuns();
       this.showRuns();
     });
     this.run();
+
+    // Websocket;
   },
   computed: {
     sectionBtnActive() {
@@ -270,13 +306,13 @@ export default {
     }
   },
   methods: {
-    selectThisRun(){
+    selectThisRun() {
       // first need to attach run's data to add selected app and module
-      this.selected_app=this.apps.find(k=>k.id == this.selected_run.app_id); // set to make modules showen
-      this.$nextTick(()=>{
-        this.selected_module=this.modules.find(k=>k.id == this.selected_run.module_id);
-        this.$nextTick(()=>{
-          var route=`/${this.selected_app.code}/${this.selected_module.code}/${this.selected_run.code}`;
+      this.selected_app = this.apps.find(k => k.id == this.selected_run.app_id); // set to make modules showen
+      this.$nextTick(() => {
+        this.selected_module = this.modules.find(k => k.id == this.selected_run.module_id);
+        this.$nextTick(() => {
+          var route = `/${this.selected_app.code}/${this.selected_module.code}/${this.selected_run.code}`;
           this.$router.push(route).then(() => {
             this.$nextTick(() => {
               this.run();
@@ -285,32 +321,32 @@ export default {
 
         });
       });
-    
+
       // Handle when a run is selected
       this.sectionController();
     },
-    async run(){
-        var asyncComponent;
-        if(this.toRun!=null){
-          this.section='run';
-          try {
-            var componentPath=`${this.toApp}/${this.toModule}/${this.toRun}`;
-            // const component = await import(`./eduPlat/setupData/lecturersMainData.vue`);
-            const component = await import(/* @vite-ignore */ `./${componentPath}.vue`);
-            asyncComponent = markRaw(component.default);
-          } catch (error) {
-            asyncComponent=markRaw(StatusCode404);
-          }
-          this.dynamicComponent=asyncComponent;
+    async run() {
+      var asyncComponent;
+      if (this.toRun != null) {
+        this.section = 'run';
+        try {
+          var componentPath = `${this.toApp}/${this.toModule}/${this.toRun}`;
+          // const component = await import(`./eduPlat/setupData/lecturersMainData.vue`);
+          const component = await import(/* @vite-ignore */ `./${componentPath}.vue`);
+          asyncComponent = markRaw(component.default);
+        } catch (error) {
+          asyncComponent = markRaw(StatusCode404);
         }
+        this.dynamicComponent = asyncComponent;
+      }
     },
-    showAllRuns(){
-      this.apps.forEach((e)=>{
-        e.modules.forEach((m)=>{
+    showAllRuns() {
+      this.apps.forEach((e) => {
+        e.modules.forEach((m) => {
           this.runs = this.runs.concat(m.runs); // Flatten the array by concatenating
         });
       });
-      this.allRuns=[...this.runs];
+      this.allRuns = [...this.runs];
     },
     showModules() {
       this.modules = this.selected_app?.modules;
@@ -318,7 +354,7 @@ export default {
     },
     showRuns() {
       var phase1;
-      if (this.runSearch=='') {
+      if (this.runSearch == '') {
         // if (this.selected_app!=null) {
         //   var phase1= this.allRuns.filter(k => k.app_id == this.selected_app.id);
         //   if (this.selected_module != null) {
@@ -328,8 +364,8 @@ export default {
         //   phase1 = this.allRuns;
         // }
         phase1 = this.allRuns;
-     
-      }else{
+
+      } else {
         phase1 = this.allRuns.filter(k => k.name.toLowerCase().includes(this.runSearch.toLowerCase()));
       }
 
@@ -346,7 +382,7 @@ export default {
     footerHide() {
       // this.favoritesClass = 'animated fadeOutDown';
       // this.$nextTick(() => {
-        this.showFavorites = null;
+      this.showFavorites = null;
       // });
     },
     logout() {
@@ -356,4 +392,3 @@ export default {
   }
 };
 </script>
-
