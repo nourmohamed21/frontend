@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import LoginView from '../views/LoginView.vue';
 import auth from '@/models/auth';
+import MyInfo from '@/views/sstore/main/MyInfo.vue';
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -9,7 +10,6 @@ const router = createRouter({
     {
       path: '/',
       name: '/',
-      // beforeEnter: (to,from,next)=>auth.middleware(to,from,next), 
       redirect: { name: 'Login' },
     },
     {
@@ -40,6 +40,10 @@ const router = createRouter({
         toModule: route.params.module,
         toRun: route.params.run
       })
+    },
+    {
+      path:'/test',
+      component:MyInfo
     }
   ]
 })

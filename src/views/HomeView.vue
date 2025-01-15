@@ -206,8 +206,6 @@
 </template>
 <script>
 import FormsSearchInput from '@/components/forms/FormsSearchInput.vue';
-import FormsInput from '@/components/forms/FormsInput.vue';
-
 import config from '@/config/app';
 import auth from '@/models/auth';
 import Api from '@/plugins/Api';
@@ -218,7 +216,6 @@ import { markRaw } from 'vue';
 
 export default {
   components: {
-    FormsInput,
     FormsSearchInput,
     AppsLogo,
     StatusCode404,
@@ -331,8 +328,10 @@ export default {
         this.section = 'run';
         try {
           var componentPath = `${this.toApp}/${this.toModule}/${this.toRun}`;
-          // const component = await import(`./eduPlat/setupData/lecturersMainData.vue`);
-          const component = await import(/* @vite-ignore */ `./${componentPath}.vue`);
+          // const component = await import(/* @vite-ignore */ `@/assets/${componentPath}.vue`);
+          const component = await import(`./${componentPath}.vue`);
+          // const component = await import(`./sstore/main/MyInfo.vue`);
+
           asyncComponent = markRaw(component.default);
         } catch (error) {
           asyncComponent = markRaw(StatusCode404);
@@ -355,14 +354,6 @@ export default {
     showRuns() {
       var phase1;
       if (this.runSearch == '') {
-        // if (this.selected_app!=null) {
-        //   var phase1= this.allRuns.filter(k => k.app_id == this.selected_app.id);
-        //   if (this.selected_module != null) {
-        //      phase1 = this.selected_module?.runs;
-        //   }
-        // }else{
-        //   phase1 = this.allRuns;
-        // }
         phase1 = this.allRuns;
 
       } else {

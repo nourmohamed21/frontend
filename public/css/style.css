@@ -69,7 +69,7 @@ Waves
 /****************************/
 /** Imports **/
 /****************************/
-@import url('https://fonts.googleapis.com/css2?family=Lalezar:wght@400&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Lalezar:wght@400&display=swap'); */
 /* @import url("https://fonts.googleapis.com/css?family=IBM+Plex+Sans:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i|Rubik:300,300i,400,400i,500,500i,700,700i,900,900i&display=swap"); */
 /*Social Media Colors*/
 /*Theme Colors*/
@@ -77,10 +77,10 @@ Waves
 /*Theme Colors For Dark*/
 /*---reset---*/
 /*Body*/
-@import url(swal.css);
+/* @import url(swal.css);
 @import url(horizontal-menu.css);
 @import url(style_rtl.css);
-@import url(../assets/icons/font-awesome/css/font-awesome.css);
+@import url(font-awesome.min.css); */
 /* @import url(../assets/icons/Ionicons/css/ionicons.css); */
 /* @import url(../assets/icons/themify-icons/themify-icons.css); */
 /* @import url(../assets/icons/linea-icons/linea.css); */
@@ -91,9 +91,8 @@ Waves
 /* @import url(../assets/icons/cryptocoins-master/cryptocoins.css); */
 /* @import url(../assets/icons/weather-icons/css/weather-icons.min.css); */
 /* @import url(../assets/icons/iconsmind/style.css); */
-@import url(../assets/icons/icomoon/style.css);
-@import url(../assets/vendor_components/animate/animate.css);
-@import url(color_theme.css);
+/* @import url(animate.css); */
+/* @import url(color_theme.css); */
 .text-dark-i{
   color: #050505 !important;
 }

@@ -3,9 +3,7 @@ import { fileURLToPath, URL } from 'node:url'
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import vueDevTools from 'vite-plugin-vue-devtools'
-import { defineAsyncComponent } from 'vue'
 
-// https://vitejs.dev/config/
 export default defineConfig({
   server: {
     host: '0.0.0.0', // Allow access from all network interfaces
@@ -21,7 +19,5 @@ export default defineConfig({
       '!': fileURLToPath(new URL('./public', import.meta.url)),
     }
   },
-  components: {
-    FormsInput: defineAsyncComponent(() => import('@/components/forms/FormsInput.vue')),
-  },
+  
 })
